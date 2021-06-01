@@ -19,7 +19,7 @@ fftw:
 jsoncpp:
 - 1.9.4
 krb5:
-- 1.17.1
+- '1.19'
 libcurl:
 - '7'
 macos_machine:
