@@ -9,8 +9,6 @@ source:
   url: https://software.igwn.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: c89a764cbaabe9c2d34caa5a9ee53cff659bf8e6d7c7eaef9cc54041b507a5a7
   patches:
-    # remove all static links
-    - no-static-links.patch
     # fix ldflags
     - ldflags.patch
     # use tinfow instead of termcap
