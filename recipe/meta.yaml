@@ -122,33 +122,6 @@ outputs:
       summary: GDS package low-latency libraries
       description: Low-latency libraries implement the gds shared memory and interconnects
 
-  - name: gds-base-frameio
-    script: install-base-frameio.sh
-    requirements:
-      build:
-        - {{ compiler('cxx') }}
-      host:
-        - {{ pin_subpackage('gds-base', exact=True) }}
-        - {{ pin_subpackage('gds-framexmit', exact=True) }}
-        - zlib
-      run:
-        - {{ pin_subpackage('gds-base', exact=True) }}
-        - {{ pin_subpackage('gds-framexmit', exact=True) }}
-        - zlib
-    test:
-      commands:
-        - fdir -h
-        - fextract -h
-        - finfo -h
-        - framedump -h  # [not osx]
-        - fsettime -h
-    about:
-      home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
-      license: GPL-2.0-only
-      license_family: GPL
-      license_file: COPYING
-      summary: GDS package Frame I/O libraries
-
   - name: gds-base-crtools
     script: install-base-crtools.sh
     build:
