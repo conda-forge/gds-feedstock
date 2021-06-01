@@ -288,12 +288,9 @@ outputs:
         - zlib
     test:
       commands:
-        - AlarmCtrl -h
-        - AlarmMgr -h
+        - AlarmCtrl help
         - NameCtrl --help
         - NameServer --help
-        - TrigMgr --help
-        - TrigRndm --help
     about:
       home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
       license: GPL-2.0-only
