@@ -1,5 +1,5 @@
 {% set name = "gds" %}
-{% set version = "2.19.6" %}
+{% set version = "2.19.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://software.igwn.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: c89a764cbaabe9c2d34caa5a9ee53cff659bf8e6d7c7eaef9cc54041b507a5a7
+  sha256: cf73a51780e25e317bd46c73c44b554a9aa3fa9448915a2c211e2e956ea0961d
   patches:
     # fix ldflags
     - ldflags.patch
@@ -20,7 +20,7 @@ source:
     - perl-shebang.patch
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -290,7 +290,7 @@ outputs:
       commands:
         - AlarmCtrl help
         - NameCtrl --help
-        - NameServer --help
+        - dmt_nameserver --help
     about:
       home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
       license: GPL-2.0-only
