@@ -29,7 +29,6 @@ requirements:
   build:
     - gnuconfig  # [unix]
     - {{ compiler('cxx') }}
-    - libtool  # [unix]
     - make  # [unix]
     - pkg-config
   host:
