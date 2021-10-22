@@ -9,6 +9,8 @@ source:
   url: https://software.igwn.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: cf73a51780e25e317bd46c73c44b554a9aa3fa9448915a2c211e2e956ea0961d
   patches:
+    # update configure for macOS 11.0
+    - osx-11.patch  # [osx]
     # fix ldflags
     - ldflags.patch
     # use tinfow instead of termcap
