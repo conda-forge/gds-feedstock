@@ -1,4 +1,6 @@
 #!/bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
 
 set -ex
 
@@ -25,12 +27,14 @@ ${SRC_DIR}/configure \
 	--enable-online \
 	--includedir=${PREFIX}/include/gds \
 	--prefix="${PREFIX}" \
+	--without-hdf5 \
 	--without-sasl \
 ;
 
 # build
-#export CPU_COUNT=1
 make -j ${CPU_COUNT} V=1 VERBOSE=1
 
-# check
-make -j ${CPU_COUNT} V=1 VERBOSE=1 check
+# check (only when not cross compiling)
+if [[ $build_platform == $target_platform ]]; then
+	make -j ${CPU_COUNT} V=1 VERBOSE=1 check
+fi
