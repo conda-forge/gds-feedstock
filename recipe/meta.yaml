@@ -52,6 +52,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - make  # [unix]
       host:
         - expat
         - fftw
@@ -102,6 +103,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - make  # [unix]
       host:
         - {{ pin_subpackage('gds-base', exact=True) }}
       run:
@@ -132,6 +134,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
+        - make  # [unix]
       host:
         - expat
         - fftw
@@ -172,6 +175,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
+        - make  # [unix]
       host:
         - {{ pin_subpackage('gds-base', exact=True) }}
         - zlib
@@ -199,6 +203,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
+        - make  # [unix]
       host:
         - expat
         - fftw
@@ -229,6 +234,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
+        - make  # [unix]
     test:
       commands:
         - test -x ${PREFIX}/bin/no_insert  # [unix]
@@ -245,6 +251,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
+        - make  # [unix]
       host:
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-crtools', exact=True) }}
@@ -270,6 +277,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
+        - make  # [unix]
       host:
         - expat
         - fftw
