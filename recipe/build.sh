@@ -8,7 +8,7 @@ mkdir -p _build
 pushd _build
 
 # set missing flags
-export CFLAGS="-D_POSIX_C_SOURCE=199309L -D_BSD_SOURCE -DM_PI=3.14159265358979323846 ${CFLAGS}"
+export CFLAGS="-Werror=implicit-function-declaration -D_BSD_SOURCE -D_POSIX_C_SOURCE=199309L -DM_PI=3.14159265358979323846 ${CFLAGS}"
 if  [[ "$(uname)" == "Darwin" ]]; then
 	# required for TCP_KEEPALIVE
 	export CFLAGS="-D_DARWIN_C_SOURCE ${CFLAGS}"
