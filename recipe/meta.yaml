@@ -221,7 +221,6 @@ outputs:
         - make  # [unix]
     test:
       commands:
-        - test -x ${PREFIX}/bin/no_insert  # [unix]
         - test -f ${PREFIX}/share/gds/procmgt/LHO_MonitorDQ_Start  # [unix]
     about:
       home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
