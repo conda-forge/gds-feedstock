@@ -1,7 +1,7 @@
 #!/bin/bash
 
 install_dirs=(
-RunFiles
+dmt-runtime
 )
 
 pushd _build
