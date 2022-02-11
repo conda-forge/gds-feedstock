@@ -18,6 +18,8 @@ source:
     - macos-building_macports.patch  # [osx]
     # replace shebang for perl script
     - perl-shebang.patch
+    # don't attempt to install default-dmt-procmgt
+    - no-default-dmt-procmgt.patch
 
 build:
   error_overdepending: true
