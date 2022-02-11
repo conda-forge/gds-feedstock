@@ -1,5 +1,5 @@
 {% set name = "gds" %}
-{% set version = "2.19.7" %}
+{% set version = "2.19.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,8 @@ package:
 
 source:
   url: https://software.igwn.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: cf73a51780e25e317bd46c73c44b554a9aa3fa9448915a2c211e2e956ea0961d
+  sha256: 9a382dc09447f5745eeb9c5250f961ba7f2288a94d40773fbce4b99fb68a78d0
   patches:
-    # update configure for macOS 11.0
-    - osx-11.patch  # [osx]
     # fix ldflags
     - ldflags.patch
     # use tinfow instead of termcap
@@ -20,9 +18,13 @@ source:
     - macos-building_macports.patch  # [osx]
     # replace shebang for perl script
     - perl-shebang.patch
+    # don't attempt to install default-dmt-procmgt
+    - no-default-dmt-procmgt.patch
 
 build:
-  number: 3
+  error_overdepending: true
+  error_overlinking: true
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -66,7 +68,7 @@ outputs:
         - jsoncpp
         - libcurl
         - metaio
-        - zlib
+        - libzlib
     test:
       requires:
         - pkg-config
@@ -136,19 +138,11 @@ outputs:
         - {{ compiler('cxx') }}
         - make  # [unix]
       host:
-        - expat
         - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
-        - libcurl
-        - metaio
-        - zlib
       run:
-        - expat
         - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
-        - libcurl
-        - metaio
-        - zlib
     test:
       requires:
         - pkg-config
@@ -178,10 +172,8 @@ outputs:
         - make  # [unix]
       host:
         - {{ pin_subpackage('gds-base', exact=True) }}
-        - zlib
       run:
         - {{ pin_subpackage('gds-base', exact=True) }}
-        - zlib
     test:
       requires:
         - pkg-config
@@ -198,6 +190,11 @@ outputs:
   - name: gds-base-monitors
     script: install-base-monitors.sh
     build:
+      ignore_run_exports:
+        # the build needs the c++ compiler, but doesn't
+        # link against it
+        - libcxx  # [osx]
+        - libstdcxx-ng  # [linux]
       run_exports:
         - {{ pin_subpackage("gds-base-monitors", max_pin="x.x") }}
     requirements:
@@ -205,19 +202,11 @@ outputs:
         - {{ compiler('cxx') }}
         - make  # [unix]
       host:
-        - expat
-        - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
-        - metaio
-        - zlib
       run:
-        - expat
-        - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
-        - metaio
-        - zlib
     test:
       commands:
         - test -f ${PREFIX}/lib/libmonitor${SHLIB_EXT}  # [unix]
@@ -237,7 +226,6 @@ outputs:
         - make  # [unix]
     test:
       commands:
-        - test -x ${PREFIX}/bin/no_insert  # [unix]
         - test -f ${PREFIX}/share/gds/procmgt/LHO_MonitorDQ_Start  # [unix]
     about:
       home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
@@ -279,23 +267,17 @@ outputs:
         - {{ compiler('cxx') }}
         - make  # [unix]
       host:
-        - expat
-        - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-crtools', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
         - {{ pin_subpackage('gds-base-monitors', exact=True) }}
         - metaio
-        - zlib
       run:
-        - expat
-        - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-crtools', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
         - {{ pin_subpackage('gds-base-monitors', exact=True) }}
         - perl
-        - zlib
     test:
       commands:
         - AlarmCtrl help
