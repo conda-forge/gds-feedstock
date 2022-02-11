@@ -191,6 +191,9 @@ outputs:
     script: install-base-monitors.sh
     build:
       ignore_run_exports:
+        # the build needs the c++ compiler, but doesn't
+        # link against it
+        - libcxx  # [osx]
         - libstdcxx-ng  # [linux]
       run_exports:
         - {{ pin_subpackage("gds-base-monitors", max_pin="x.x") }}
