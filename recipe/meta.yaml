@@ -20,6 +20,8 @@ source:
     - perl-shebang.patch
 
 build:
+  error_overdepending: true
+  error_overlinking: true
   number: 0
   skip: true  # [win]
 
@@ -64,7 +66,7 @@ outputs:
         - jsoncpp
         - libcurl
         - metaio
-        - zlib
+        - libzlib
     test:
       requires:
         - pkg-config
@@ -134,19 +136,11 @@ outputs:
         - {{ compiler('cxx') }}
         - make  # [unix]
       host:
-        - expat
         - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
-        - libcurl
-        - metaio
-        - zlib
       run:
-        - expat
         - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
-        - libcurl
-        - metaio
-        - zlib
     test:
       requires:
         - pkg-config
@@ -176,10 +170,8 @@ outputs:
         - make  # [unix]
       host:
         - {{ pin_subpackage('gds-base', exact=True) }}
-        - zlib
       run:
         - {{ pin_subpackage('gds-base', exact=True) }}
-        - zlib
     test:
       requires:
         - pkg-config
@@ -196,6 +188,8 @@ outputs:
   - name: gds-base-monitors
     script: install-base-monitors.sh
     build:
+      ignore_run_exports:
+        - libstdcxx-ng  # [linux]
       run_exports:
         - {{ pin_subpackage("gds-base-monitors", max_pin="x.x") }}
     requirements:
@@ -203,19 +197,11 @@ outputs:
         - {{ compiler('cxx') }}
         - make  # [unix]
       host:
-        - expat
-        - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
-        - metaio
-        - zlib
       run:
-        - expat
-        - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
-        - metaio
-        - zlib
     test:
       commands:
         - test -f ${PREFIX}/lib/libmonitor${SHLIB_EXT}  # [unix]
@@ -277,23 +263,17 @@ outputs:
         - {{ compiler('cxx') }}
         - make  # [unix]
       host:
-        - expat
-        - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-crtools', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
         - {{ pin_subpackage('gds-base-monitors', exact=True) }}
         - metaio
-        - zlib
       run:
-        - expat
-        - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-crtools', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
         - {{ pin_subpackage('gds-base-monitors', exact=True) }}
         - perl
-        - zlib
     test:
       commands:
         - AlarmCtrl help
