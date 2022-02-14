@@ -27,6 +27,7 @@ ${SRC_DIR}/configure \
 	--enable-online \
 	--includedir=${PREFIX}/include/gds \
 	--prefix="${PREFIX}" \
+	--with-jsoncpp="${PREFIX}" \
 	--without-hdf5 \
 	--without-sasl \
 ;

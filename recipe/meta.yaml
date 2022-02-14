@@ -24,7 +24,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -208,9 +208,13 @@ outputs:
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
     test:
+      requires:
+        - pkg-config
       commands:
         - test -f ${PREFIX}/lib/libmonitor${SHLIB_EXT}  # [unix]
         - test -f ${PREFIX}/lib/libtclient${SHLIB_EXT}  # [unix]
+        - pkg-config --print-errors --exact-version "{{ version }}" gdsmonitor  # [unix]
+        - pkg-config --print-errors --exact-version "{{ version }}" gdstclient  # [unix]
     about:
       home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
       license: GPL-2.0-only
