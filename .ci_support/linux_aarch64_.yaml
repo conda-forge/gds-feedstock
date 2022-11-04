@@ -30,19 +30,6 @@ libcurl:
 - '7'
 ncurses:
 - '6'
-pin_run_as_build:
-  fftw:
-    max_pin: x
-  jsoncpp:
-    max_pin: x.x.x
-  krb5:
-    max_pin: x.x
-  libcurl:
-    max_pin: x
-  readline:
-    max_pin: x
-  zlib:
-    max_pin: x.x
 readline:
 - '8'
 target_platform:

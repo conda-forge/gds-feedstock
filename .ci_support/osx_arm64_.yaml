@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '13'
+- '14'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -11,7 +11,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '13'
+- '14'
 expat:
 - '2'
 fftw:
@@ -26,19 +26,6 @@ macos_machine:
 - arm64-apple-darwin20.0.0
 ncurses:
 - '6'
-pin_run_as_build:
-  fftw:
-    max_pin: x
-  jsoncpp:
-    max_pin: x.x.x
-  krb5:
-    max_pin: x.x
-  libcurl:
-    max_pin: x
-  readline:
-    max_pin: x
-  zlib:
-    max_pin: x.x
 readline:
 - '8'
 target_platform:
