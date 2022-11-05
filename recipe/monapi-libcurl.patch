@@ -1,0 +1,11 @@
+--- Services/monapi/Makefile.in	2022-11-04 16:46:34.000000000 +0000
++++ Services/monapi/Makefile.in	2022-11-05 16:34:54.053902100 +0000
+@@ -455,7 +455,7 @@
+ 			  ../../IO/xsil/libxsil.la \
+ 			  ../../Containers/libgdscntr.la \
+ 			  ../../IO/sockutil/libsockutil.la \
+-			  $(netlib) -lcurl $(sysmtlibs)
++			  $(netlib) $(sysmtlibs)
+ 
+ libdmtaccess_la_SOURCES = monaccess.cc monitorapi.cc
+ libdmtaccess_la_LIBADD = \

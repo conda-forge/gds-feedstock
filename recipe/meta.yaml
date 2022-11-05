@@ -22,6 +22,8 @@ source:
     - no-default-dmt-procmgt.patch
     # fix libtool's overlinking
     - overlinking.patch
+    # backport https://git.ligo.org/gds/gds/-/merge_requests/248
+    - monapi-libcurl.patch
 
 build:
   error_overdepending: true
