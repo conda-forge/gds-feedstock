@@ -20,6 +20,8 @@ source:
     - perl-shebang.patch
     # don't attempt to install default-dmt-procmgt
     - no-default-dmt-procmgt.patch
+    # fix libtool's overlinking
+    - overlinking.patch
 
 build:
   error_overdepending: true
