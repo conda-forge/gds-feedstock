@@ -1,0 +1,11 @@
+--- config/ltmain.sh	2021-05-20 19:12:19.000000000 +0100
++++ config/ltmain.sh	2022-11-05 15:47:29.513902100 +0000
+@@ -10892,7 +10892,7 @@
+ inherited_linker_flags='$new_inherited_linker_flags'
+ 
+ # Libraries that this one depends upon.
+-dependency_libs='$dependency_libs'
++#dependency_libs='$dependency_libs'
+ 
+ # Names of additional weak libraries provided by this library
+ weak_library_names='$weak_libs'
