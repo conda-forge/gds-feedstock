@@ -1,5 +1,5 @@
 {% set name = "gds" %}
-{% set version = "2.19.10" %}
+{% set version = "2.19.11" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://software.igwn.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 0d93a4deae6a12f9e4b8b75cd0fa63440317903ebbcbcbd4d51c2cd85926f4ed
+  sha256: 7d5e07a8e7779f86bb4043a4283924a35b777d272c2c12b73dfdda0fb531e122
   patches:
     # fix ldflags
     - ldflags.patch
