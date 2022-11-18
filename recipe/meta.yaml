@@ -43,7 +43,7 @@ requirements:
     - jsoncpp
     - krb5
     - libcurl
-    - metaio
+    - libmetaio
     - ncurses
     - readline
     - zlib
@@ -64,14 +64,14 @@ outputs:
         - fftw
         - jsoncpp
         - libcurl
-        - metaio
+        - libmetaio
         - zlib
       run:
         - expat
         - fftw
         - jsoncpp
         - libcurl
-        - metaio
+        - libmetaio
         - libzlib
     test:
       requires:
@@ -279,7 +279,7 @@ outputs:
         - {{ pin_subpackage('gds-base-crtools', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
         - {{ pin_subpackage('gds-base-monitors', exact=True) }}
-        - metaio
+        - libmetaio
       run:
         - {{ pin_subpackage('gds-base', exact=True) }}
         - {{ pin_subpackage('gds-base-crtools', exact=True) }}
