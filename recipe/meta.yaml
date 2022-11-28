@@ -28,7 +28,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -53,7 +53,7 @@ outputs:
     script: install-base.sh
     build:
       run_exports:
-        - {{ pin_subpackage("gds-base", max_pin="x.x") }}
+        - {{ pin_subpackage("gds-base", max_pin="x") }}
     requirements:
       build:
         - {{ compiler('c') }}
@@ -104,7 +104,7 @@ outputs:
     script: install-framexmit.sh
     build:
       run_exports:
-        - {{ pin_subpackage("gds-framexmit", max_pin="x.x") }}
+        - {{ pin_subpackage("gds-framexmit", max_pin="x") }}
     requirements:
       build:
         - {{ compiler('c') }}
@@ -136,7 +136,7 @@ outputs:
     script: install-base-crtools.sh
     build:
       run_exports:
-        - {{ pin_subpackage("gds-base-crtools", max_pin="x.x") }}
+        - {{ pin_subpackage("gds-base-crtools", max_pin="x") }}
     requirements:
       build:
         - {{ compiler('cxx') }}
@@ -169,7 +169,7 @@ outputs:
     script: install-base-gdstrig.sh
     build:
       run_exports:
-        - {{ pin_subpackage("gds-base-gdstrig", max_pin="x.x") }}
+        - {{ pin_subpackage("gds-base-gdstrig", max_pin="x") }}
     requirements:
       build:
         - {{ compiler('cxx') }}
@@ -200,7 +200,7 @@ outputs:
         - libcxx  # [osx]
         - libstdcxx-ng  # [linux]
       run_exports:
-        - {{ pin_subpackage("gds-base-monitors", max_pin="x.x") }}
+        - {{ pin_subpackage("gds-base-monitors", max_pin="x") }}
     requirements:
       build:
         - {{ compiler('cxx') }}
@@ -269,7 +269,7 @@ outputs:
     script: install-services.sh
     build:
       run_exports:
-        - {{ pin_subpackage("gds-services", max_pin="x.x") }}
+        - {{ pin_subpackage("gds-services", max_pin="x") }}
     requirements:
       build:
         - {{ compiler('cxx') }}
