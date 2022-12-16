@@ -28,7 +28,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:
@@ -41,7 +41,6 @@ requirements:
     - expat
     - fftw
     - jsoncpp
-    - krb5
     - libcurl
     - libmetaio
     - ncurses
