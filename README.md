@@ -1,13 +1,91 @@
+About gds-feedstock
+===================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gds-feedstock/blob/main/LICENSE.txt)
+
+
 About gds
-=========
+---------
 
 Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
 
 Package license: GPL-2.0-only
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gds-feedstock/blob/main/LICENSE.txt)
+Summary: LIGO Global Diagnostics System
+
+About gds-base
+--------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
 
 Summary: Core libraries required by the rest of the GDS packages
+
+About gds-base-runtime
+----------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: DMT run-time software
+
+About gds-base-crtools
+----------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: GDS package Frame I/O libraries
+
+About gds-base-gdstrig
+----------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: Ligo GDS trigger library
+
+About gds-framexmit
+-------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: GDS package low-latency libraries
+
+Low-latency libraries implement the gds shared memory and interconnects
+
+About gds-base-monitors
+-----------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: GDS Libraries used by DMT Monitor programs
+
+About gds-base-web
+------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: DMT web services
+
+About gds-services
+------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: GDS runtime services
 
 Current build status
 ====================
@@ -149,7 +227,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
