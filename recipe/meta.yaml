@@ -1,13 +1,13 @@
-{% set name = "gds" %}
-{% set version = "3.0.0" %}
+{% set name = "gds-base" %}
+{% set version = "3.0.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name|lower }}-build
   version: {{ version }}
 
 source:
   url: https://software.igwn.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 91ae74f9c1b3f47ee0cc48a75b951a004a52bc515fa1dbf66adcec98534b81ab
+  sha256: 8a2e24708b5acf67881d71f7d3a843b44e51588d365071e96fd5e4f154a6f9cb
   patches:
     # fix ldflags
     - ldflags.patch
@@ -28,7 +28,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 3
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -304,6 +304,7 @@ about:
   summary: LIGO Global Diagnostics System
 
 extra:
+  feedstock-name: gds
   recipe-maintainers:
     - duncanmmacleod
     - emaros
