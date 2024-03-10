@@ -16,10 +16,6 @@ source:
     # hack the build to make it think we're using macports
     # see https://git.ligo.org/gds/gds/-/issues/69
     - macos-building_macports.patch  # [osx]
-    # replace shebang for perl script
-    - perl-shebang.patch
-    # don't attempt to install default-dmt-procmgt
-    - no-default-dmt-procmgt.patch
     # fix libtool's overlinking
     - overlinking.patch
     # backport https://git.ligo.org/gds/gds/-/merge_requests/248
@@ -283,10 +279,8 @@ outputs:
         - {{ pin_subpackage('gds-base-crtools', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
         - {{ pin_subpackage('gds-base-monitors', exact=True) }}
-        - perl
     test:
       commands:
-        - AlarmCtrl help
         - NameCtrl --help
         - dmt_nameserver --help
     about:
