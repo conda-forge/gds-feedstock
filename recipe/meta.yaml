@@ -213,22 +213,6 @@ outputs:
       license_file: COPYING
       summary: GDS Libraries used by DMT Monitor programs
 
-  - name: gds-base-runtime
-    script: install-base-runtime.sh
-    requirements:
-      build:
-        - {{ compiler('cxx') }}
-        - make  # [unix]
-    test:
-      commands:
-        - test -f ${PREFIX}/share/gds/procmgt/LHO_MonitorDQ_Start  # [unix]
-    about:
-      home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
-      license: GPL-2.0-only
-      license_family: GPL
-      license_file: COPYING
-      summary: DMT run-time software
-
   - name: gds-base-web
     script: install-base-web.sh
     requirements:
