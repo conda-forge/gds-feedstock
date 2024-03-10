@@ -61,13 +61,6 @@ outputs:
         - libcurl
         - libmetaio
         - zlib
-      run:
-        - expat
-        - fftw
-        - jsoncpp
-        - libcurl
-        - libmetaio
-        - libzlib
     test:
       requires:
         - pkg-config
@@ -140,7 +133,6 @@ outputs:
         - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
       run:
-        - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
     test:
       requires:
