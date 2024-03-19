@@ -14,6 +14,14 @@ if  [[ "$(uname)" == "Darwin" ]]; then
 	export CFLAGS="-D_DARWIN_C_SOURCE ${CFLAGS}"
 fi
 
+# set arguments for all make commands
+_make="make
+-j${CPU_COUNT}
+V=1
+VERBOSE=1
+zlibcflags=\"-I${PREFIX}/include\"
+"
+
 # configure
 ${SRC_DIR}/configure \
 	--disable-dmtviewer \
@@ -33,9 +41,9 @@ ${SRC_DIR}/configure \
 ;
 
 # build
-make -j ${CPU_COUNT} V=1 VERBOSE=1
+$_make
 
 # check (only when not cross compiling)
 if [[ $build_platform == $target_platform ]]; then
-	make -j ${CPU_COUNT} V=1 VERBOSE=1 check
+	$_make check
 fi
