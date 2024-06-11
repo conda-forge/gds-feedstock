@@ -1,13 +1,13 @@
-{% set name = "gds" %}
-{% set version = "3.0.0" %}
+{% set name = "gds-base" %}
+{% set version = "3.0.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name|lower }}-build
   version: {{ version }}
 
 source:
   url: https://software.igwn.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 91ae74f9c1b3f47ee0cc48a75b951a004a52bc515fa1dbf66adcec98534b81ab
+  sha256: 8a2e24708b5acf67881d71f7d3a843b44e51588d365071e96fd5e4f154a6f9cb
   patches:
     # fix ldflags
     - ldflags.patch
@@ -16,10 +16,6 @@ source:
     # hack the build to make it think we're using macports
     # see https://git.ligo.org/gds/gds/-/issues/69
     - macos-building_macports.patch  # [osx]
-    # replace shebang for perl script
-    - perl-shebang.patch
-    # don't attempt to install default-dmt-procmgt
-    - no-default-dmt-procmgt.patch
     # fix libtool's overlinking
     - overlinking.patch
     # backport https://git.ligo.org/gds/gds/-/merge_requests/248
@@ -28,7 +24,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 3
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -65,13 +61,6 @@ outputs:
         - libcurl
         - libmetaio
         - zlib
-      run:
-        - expat
-        - fftw
-        - jsoncpp
-        - libcurl
-        - libmetaio
-        - libzlib
     test:
       requires:
         - pkg-config
@@ -144,7 +133,6 @@ outputs:
         - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
       run:
-        - fftw
         - {{ pin_subpackage('gds-base', exact=True) }}
     test:
       requires:
@@ -225,22 +213,6 @@ outputs:
       license_file: COPYING
       summary: GDS Libraries used by DMT Monitor programs
 
-  - name: gds-base-runtime
-    script: install-base-runtime.sh
-    requirements:
-      build:
-        - {{ compiler('cxx') }}
-        - make  # [unix]
-    test:
-      commands:
-        - test -f ${PREFIX}/share/gds/procmgt/LHO_MonitorDQ_Start  # [unix]
-    about:
-      home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
-      license: GPL-2.0-only
-      license_family: GPL
-      license_file: COPYING
-      summary: DMT run-time software
-
   - name: gds-base-web
     script: install-base-web.sh
     requirements:
@@ -283,10 +255,8 @@ outputs:
         - {{ pin_subpackage('gds-base-crtools', exact=True) }}
         - {{ pin_subpackage('gds-base-gdstrig', exact=True) }}
         - {{ pin_subpackage('gds-base-monitors', exact=True) }}
-        - perl
     test:
       commands:
-        - AlarmCtrl help
         - NameCtrl --help
         - dmt_nameserver --help
     about:
@@ -304,6 +274,7 @@ about:
   summary: LIGO Global Diagnostics System
 
 extra:
+  feedstock-name: gds
   recipe-maintainers:
     - duncanmmacleod
     - emaros
