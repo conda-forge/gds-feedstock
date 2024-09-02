@@ -1,0 +1,59 @@
+From 272220561215b849c4b61773b023cb24e015a8b5 Mon Sep 17 00:00:00 2001
+From: John Zweizig <john.zweizig@ligo.org>
+Date: Tue, 19 Mar 2024 02:26:18 +0000
+Subject: [PATCH] change getInterfaces() to compile under macos. remove
+ DpushTease build.
+
+---
+ IO/framexmit/matchInterface.cc     |  7 +++++--
+ lowlatency-tools/Dpush/Makefile.am | 16 ++++++++--------
+ 2 files changed, 13 insertions(+), 10 deletions(-)
+
+diff --git a/IO/framexmit/matchInterface.cc b/IO/framexmit/matchInterface.cc
+index b8d4470a3..b51efe7fd 100644
+--- a/IO/framexmit/matchInterface.cc
++++ b/IO/framexmit/matchInterface.cc
+@@ -81,9 +81,12 @@ namespace framexmit {
+          if (ioctl (sock, SIOCGIFNETMASK, (char*) ifr) < 0) {
+             return -1;
+          }
++#if defined(__APPLE__)
++         iface.mask = ((sockaddr_in*)(&ifr->ifr_addr))->sin_addr.s_addr;
++#else
+          iface.mask = ((sockaddr_in*)(&ifr->ifr_netmask))->sin_addr.s_addr;
+-
+-         //-----------------------------  Get the net mask
++#endif
++         //-----------------------------  Get the broadcast address
+          if (ioctl (sock, SIOCGIFBRDADDR, (char*) ifr) < 0) {
+             return -1;
+          }
+diff --git a/lowlatency-tools/Dpush/Makefile.am b/lowlatency-tools/Dpush/Makefile.am
+index cdd36c22c..3fc8cf7cb 100644
+--- a/lowlatency-tools/Dpush/Makefile.am
++++ b/lowlatency-tools/Dpush/Makefile.am
+@@ -24,13 +24,13 @@ AM_CXXFLAGS		= $(WARNINGCXXFLAGS) $(opt) $(GDS_CPLUSPLUS_DEFS)
+ DEFS			= 
+ 
+ #---------------------------  This code is to make a special teasing Dpus
+-SUBDIRS			= tease
++# SUBDIRS			= tease
+ 
+-bin_PROGRAMS += DpushTease
++# bin_PROGRAMS += DpushTease
+ 
+-DpushTease_SOURCES	= Dpush.C stdio_fd.cc
+-DpushTease_CXXFLAGS	= $(opt) -DMULTICNDS -DTEASER $(DpushTease_CFLAGS)
+-DpushTease_LDADD	= \
+-			tease/libtease.la \
+-			$(DpushTease_LIBS) \
+-			$(netlib) $(syslibs)
++# DpushTease_SOURCES	= Dpush.C stdio_fd.cc
++# DpushTease_CXXFLAGS	= $(opt) -DMULTICNDS -DTEASER $(DpushTease_CFLAGS)
++# DpushTease_LDADD	= \
++#			tease/libtease.la \
++#			$(DpushTease_LIBS) \
++#			$(netlib) $(syslibs)
+-- 
+GitLab
+

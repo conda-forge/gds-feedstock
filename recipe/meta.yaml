@@ -20,6 +20,8 @@ source:
     - overlinking.patch
     # backport https://git.ligo.org/gds/gds/-/merge_requests/248
     - monapi-libcurl.patch
+    # backport https://git.ligo.org/gds/gds/-/merge_requests/295
+    - getinterfaces.patch
 
 build:
   error_overdepending: true
