@@ -22,6 +22,8 @@ source:
     - monapi-libcurl.patch
     # backport https://git.ligo.org/gds/gds/-/merge_requests/295
     - getinterfaces.patch
+    # fix uint32_t error (https://git.ligo.org/gds/gds/-/issues/184)
+    - cstdint.patch
 
 build:
   error_overdepending: true

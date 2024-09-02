@@ -1,0 +1,12 @@
+diff --git a/Services/NameServer/NameServer.cc b/Services/NameServer/NameServer.cc
+index dd3e87457..1d885e05f 100644
+--- a/Services/NameServer/NameServer.cc
++++ b/Services/NameServer/NameServer.cc
+@@ -6,6 +6,7 @@
+ #include <iostream>
+ #include <iomanip>
+ #include <cstdlib>
++#include <cstdint>
+ #include <unistd.h>
+ 
+ using namespace std;
