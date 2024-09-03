@@ -5,13 +5,19 @@ cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
 set -ex
 
 mkdir -p _build
-pushd _build
+cd _build
 
-# set missing flags
-export CFLAGS="-Werror=implicit-function-declaration -D_BSD_SOURCE -D_POSIX_C_SOURCE=199309L -DM_PI=3.14159265358979323846 ${CFLAGS}"
-if  [[ "$(uname)" == "Darwin" ]]; then
-	# required for TCP_KEEPALIVE
-	export CFLAGS="-D_DARWIN_C_SOURCE ${CFLAGS}"
+# error on any implicit function declaration
+export CFLAGS="-Werror=implicit-function-declaration ${CFLAGS}"
+
+# use _GNU_SOURCE to get some non-standard defines on Linux
+if [[ "$target_platform" == *linux* ]]; then
+	export CFLAGS="${CFLAGS} -D_GNU_SOURCE"
+fi
+
+# -undefined dynamic_lookup needs to be added manually for macOS ARM64
+if [[ "$target_platform" == "osx-arm64" ]]; then
+	LDFLAGS="${LDFLAGS} -Wl,-undefined -Wl,dynamic_lookup"
 fi
 
 # set arguments for all make commands
@@ -27,12 +33,10 @@ ${SRC_DIR}/configure \
 	--disable-dmtviewer \
 	--disable-dtt \
 	--disable-monitors \
-	--disable-online \
 	--disable-only-dtt \
 	--disable-static \
 	--disable-silent-rules \
 	--enable-dmt-runtime \
-	--enable-online \
 	--includedir=${PREFIX}/include/gds \
 	--prefix="${PREFIX}" \
 	--with-jsoncpp="${PREFIX}" \
@@ -44,6 +48,6 @@ ${SRC_DIR}/configure \
 $_make
 
 # check (only when not cross compiling)
-if [[ $build_platform == $target_platform ]]; then
+if [[ "$build_platform" == "$target_platform" ]]; then
 	$_make check
 fi
