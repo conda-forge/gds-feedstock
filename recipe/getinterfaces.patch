@@ -1,0 +1,32 @@
+From 272220561215b849c4b61773b023cb24e015a8b5 Mon Sep 17 00:00:00 2001
+From: John Zweizig <john.zweizig@ligo.org>
+Date: Tue, 19 Mar 2024 02:26:18 +0000
+Subject: [PATCH] change getInterfaces() to compile under macos. remove
+ DpushTease build.
+
+---
+ IO/framexmit/matchInterface.cc | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/IO/framexmit/matchInterface.cc b/IO/framexmit/matchInterface.cc
+index b8d4470a3..b51efe7fd 100644
+--- a/IO/framexmit/matchInterface.cc
++++ b/IO/framexmit/matchInterface.cc
+@@ -81,9 +81,12 @@ namespace framexmit {
+          if (ioctl (sock, SIOCGIFNETMASK, (char*) ifr) < 0) {
+             return -1;
+          }
++#if defined(__APPLE__)
++         iface.mask = ((sockaddr_in*)(&ifr->ifr_addr))->sin_addr.s_addr;
++#else
+          iface.mask = ((sockaddr_in*)(&ifr->ifr_netmask))->sin_addr.s_addr;
+-
+-         //-----------------------------  Get the net mask
++#endif
++         //-----------------------------  Get the broadcast address
+          if (ioctl (sock, SIOCGIFBRDADDR, (char*) ifr) < 0) {
+             return -1;
+          }
+-- 
+2.39.2
+

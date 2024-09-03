@@ -1,13 +1,82 @@
+About gds-feedstock
+===================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gds-feedstock/blob/main/LICENSE.txt)
+
+
 About gds
-=========
+---------
 
 Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
 
 Package license: GPL-2.0-only
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gds-feedstock/blob/main/LICENSE.txt)
+Summary: LIGO Global Diagnostics System
+
+About gds-base
+--------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
 
 Summary: Core libraries required by the rest of the GDS packages
+
+About gds-base-crtools
+----------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: GDS package Frame I/O libraries
+
+About gds-base-gdstrig
+----------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: Ligo GDS trigger library
+
+About gds-framexmit
+-------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: GDS package low-latency libraries
+
+Low-latency libraries implement the gds shared memory and interconnects
+
+About gds-base-monitors
+-----------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: GDS Libraries used by DMT Monitor programs
+
+About gds-base-web
+------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: DMT web services
+
+About gds-services
+------------------
+
+Home: https://computing.docs.ligo.org/daswgweb/projects/dmt.html
+
+Package license: GPL-2.0-only
+
+Summary: GDS runtime services
 
 Current build status
 ====================
@@ -78,7 +147,6 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gds--base--crtools-green.svg)](https://anaconda.org/conda-forge/gds-base-crtools) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gds-base-crtools.svg)](https://anaconda.org/conda-forge/gds-base-crtools) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gds-base-crtools.svg)](https://anaconda.org/conda-forge/gds-base-crtools) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gds-base-crtools.svg)](https://anaconda.org/conda-forge/gds-base-crtools) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gds--base--gdstrig-green.svg)](https://anaconda.org/conda-forge/gds-base-gdstrig) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gds-base-gdstrig.svg)](https://anaconda.org/conda-forge/gds-base-gdstrig) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gds-base-gdstrig.svg)](https://anaconda.org/conda-forge/gds-base-gdstrig) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gds-base-gdstrig.svg)](https://anaconda.org/conda-forge/gds-base-gdstrig) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gds--base--monitors-green.svg)](https://anaconda.org/conda-forge/gds-base-monitors) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gds-base-monitors.svg)](https://anaconda.org/conda-forge/gds-base-monitors) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gds-base-monitors.svg)](https://anaconda.org/conda-forge/gds-base-monitors) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gds-base-monitors.svg)](https://anaconda.org/conda-forge/gds-base-monitors) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-gds--base--runtime-green.svg)](https://anaconda.org/conda-forge/gds-base-runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gds-base-runtime.svg)](https://anaconda.org/conda-forge/gds-base-runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gds-base-runtime.svg)](https://anaconda.org/conda-forge/gds-base-runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gds-base-runtime.svg)](https://anaconda.org/conda-forge/gds-base-runtime) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gds--base--web-green.svg)](https://anaconda.org/conda-forge/gds-base-web) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gds-base-web.svg)](https://anaconda.org/conda-forge/gds-base-web) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gds-base-web.svg)](https://anaconda.org/conda-forge/gds-base-web) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gds-base-web.svg)](https://anaconda.org/conda-forge/gds-base-web) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gds--framexmit-green.svg)](https://anaconda.org/conda-forge/gds-framexmit) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gds-framexmit.svg)](https://anaconda.org/conda-forge/gds-framexmit) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gds-framexmit.svg)](https://anaconda.org/conda-forge/gds-framexmit) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gds-framexmit.svg)](https://anaconda.org/conda-forge/gds-framexmit) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gds--services-green.svg)](https://anaconda.org/conda-forge/gds-services) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gds-services.svg)](https://anaconda.org/conda-forge/gds-services) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gds-services.svg)](https://anaconda.org/conda-forge/gds-services) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gds-services.svg)](https://anaconda.org/conda-forge/gds-services) |
@@ -93,16 +161,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `gds-base, gds-base-crtools, gds-base-gdstrig, gds-base-monitors, gds-base-runtime, gds-base-web, gds-framexmit, gds-services` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `gds-base, gds-base-crtools, gds-base-gdstrig, gds-base-monitors, gds-base-web, gds-framexmit, gds-services` can be installed with `conda`:
 
 ```
-conda install gds-base gds-base-crtools gds-base-gdstrig gds-base-monitors gds-base-runtime gds-base-web gds-framexmit gds-services
+conda install gds-base gds-base-crtools gds-base-gdstrig gds-base-monitors gds-base-web gds-framexmit gds-services
 ```
 
 or with `mamba`:
 
 ```
-mamba install gds-base gds-base-crtools gds-base-gdstrig gds-base-monitors gds-base-runtime gds-base-web gds-framexmit gds-services
+mamba install gds-base gds-base-crtools gds-base-gdstrig gds-base-monitors gds-base-web gds-framexmit gds-services
 ```
 
 It is possible to list all of the versions of `gds-base` available on your platform with `conda`:
@@ -149,7 +217,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
