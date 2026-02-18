@@ -1,0 +1,11 @@
+--- a/Triggers/trig/TrigRslt.hh	2026-02-18 21:16:46
++++ b/Triggers/trig/TrigRslt.hh	2026-02-18 21:16:46
+@@ -34,7 +34,7 @@
+        *  \param nData Number of data words.
+        *  \param DList Array of data words.
+        */
+-      TrigRslt(const std::string& ID, const std::string& SubID=0, 
++      TrigRslt(const std::string& ID, const std::string& SubID="", 
+ 	       index_type nData=0, const param_type* DList=0);
+ 
+       /**  Release the data after recording the trigger.
