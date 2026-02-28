@@ -24,11 +24,13 @@ source:
     - getinterfaces.patch
     # fix uint32_t error (https://git.ligo.org/gds/gds/-/issues/184)
     - cstdint.patch
+    # fix std::string(nullptr_t) deleted in GCC 14+
+    - fix-trigrslt-nullptr.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:

@@ -15,9 +15,10 @@ if [[ "$target_platform" == *linux* ]]; then
 	export CFLAGS="${CFLAGS} -D_GNU_SOURCE"
 fi
 
-# -undefined dynamic_lookup needs to be added manually for macOS ARM64
-if [[ "$target_platform" == "osx-arm64" ]]; then
-	LDFLAGS="${LDFLAGS} -Wl,-undefined -Wl,dynamic_lookup"
+# macOS: libtool links some C++ convenience libs with the C linker;
+# -undefined dynamic_lookup defers symbol resolution to runtime
+if [[ "$target_platform" == osx-* ]]; then
+	export LDFLAGS="${LDFLAGS} -Wl,-undefined -Wl,dynamic_lookup"
 fi
 
 # set arguments for all make commands
