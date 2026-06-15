@@ -21,7 +21,7 @@ expat:
 fftw:
 - '3'
 jsoncpp:
-- 1.9.6
+- 1.9.7
 libcurl:
 - '8'
 ncurses:
